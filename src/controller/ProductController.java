@@ -11,8 +11,9 @@ import java.util.List;
 public class ProductController implements Serializable {
     public static ReadWriteFile readWriteFile = ReadWriteFile.getInstance();
     public static List<Product> productList = readWriteFile.readDataFromFile();
-    public static boolean addProduct (Product product) {
-        return productList.add(product);
+    public static void addProduct (Product product) {
+        productList.add(product);
+        readWriteFile.writeDataToFile(productList);
     }
     public static void removeProduct (int id) {
         for (int i = 0; i < productList.size(); i++) {
